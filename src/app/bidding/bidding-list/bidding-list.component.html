@@ -1,0 +1,34 @@
+<div *ngIf="biddings">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let bid of biddings">
+      <div class="card mb-3" [ngClass]="{'bg-light': bid.read}">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title d-flex align-items-center">
+            {{ bid.object }}
+            <span class="ms-auto" *ngIf="bid.read">
+              <span class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-danger">
+                Lido
+              </span>
+            </span>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="card-text"><i class="fas fa-building mr-2"></i>Agência: {{ bid.agency }}</p>
+              <p class="card-text"><i class="fas fa-file-alt mr-2"></i>Número: {{ bid.number }}</p>
+              <p class="card-text"><i class="fas fa-calendar-alt mr-2"></i>Entrega de Propostas: {{ bid.proposalDelivery }}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text"><i class="fas fa-map-marker-alt mr-2"></i>Endereço: {{ bid.address }}</p>
+              <p class="card-text"><i class="fas fa-phone mr-2"></i>Telefone: {{ bid.telephone }}</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-secondary" (click)="markAsRead(bid.number)">Marcar como lido</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
